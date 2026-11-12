@@ -1,0 +1,16 @@
+digraph G {
+  rankdir=LR;
+  label="test5_unreachable"; labelloc=t; fontsize=20; fontname="Helvetica";
+  node [shape=box, style=rounded, fontname="Helvetica", fontsize=11];
+  edge [arrowsize=0.7];
+  __start0 [shape=point, width=0.08];
+  __start0 -> "s_off";
+  "s_off" [label="s_off\n{∅}", penwidth=2];
+  "s_on" [label="s_on\n{is_lit}"];
+  "s_broken" [label="s_broken\n{∅}", style="rounded,dashed", color=gray55, fontcolor=gray55];
+  "s_off" -> "s_on";
+  "s_off" -> "s_off";
+  "s_on" -> "s_off";
+  "s_on" -> "s_on";
+  "s_broken" -> "s_broken";
+}
