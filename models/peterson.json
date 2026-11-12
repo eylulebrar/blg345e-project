@@ -1,0 +1,217 @@
+{
+  "atomic_propositions": [
+    "P0_in_CS",
+    "P1_in_CS",
+    "flag0",
+    "flag1",
+    "turn_is_1"
+  ],
+  "initial_states": [
+    "idle__idle__t0"
+  ],
+  "states": {
+    "idle__idle__t0": {
+      "labels": [],
+      "transitions": [
+        "flag_set__idle__t0",
+        "idle__flag_set__t0"
+      ]
+    },
+    "flag_set__idle__t0": {
+      "labels": [
+        "flag0"
+      ],
+      "transitions": [
+        "waiting__idle__t1",
+        "flag_set__flag_set__t0"
+      ]
+    },
+    "idle__flag_set__t0": {
+      "labels": [
+        "flag1"
+      ],
+      "transitions": [
+        "flag_set__flag_set__t0",
+        "idle__waiting__t0"
+      ]
+    },
+    "waiting__idle__t1": {
+      "labels": [
+        "flag0",
+        "turn_is_1"
+      ],
+      "transitions": [
+        "critical__idle__t1",
+        "waiting__flag_set__t1"
+      ]
+    },
+    "flag_set__flag_set__t0": {
+      "labels": [
+        "flag0",
+        "flag1"
+      ],
+      "transitions": [
+        "waiting__flag_set__t1",
+        "flag_set__waiting__t0"
+      ]
+    },
+    "idle__waiting__t0": {
+      "labels": [
+        "flag1"
+      ],
+      "transitions": [
+        "flag_set__waiting__t0",
+        "idle__critical__t0"
+      ]
+    },
+    "critical__idle__t1": {
+      "labels": [
+        "P0_in_CS",
+        "flag0",
+        "turn_is_1"
+      ],
+      "transitions": [
+        "idle__idle__t1",
+        "critical__flag_set__t1"
+      ]
+    },
+    "waiting__flag_set__t1": {
+      "labels": [
+        "flag0",
+        "flag1",
+        "turn_is_1"
+      ],
+      "transitions": [
+        "waiting__flag_set__t1",
+        "waiting__waiting__t0"
+      ]
+    },
+    "flag_set__waiting__t0": {
+      "labels": [
+        "flag0",
+        "flag1"
+      ],
+      "transitions": [
+        "waiting__waiting__t1",
+        "flag_set__waiting__t0"
+      ]
+    },
+    "idle__critical__t0": {
+      "labels": [
+        "P1_in_CS",
+        "flag1"
+      ],
+      "transitions": [
+        "flag_set__critical__t0",
+        "idle__idle__t0"
+      ]
+    },
+    "idle__idle__t1": {
+      "labels": [
+        "turn_is_1"
+      ],
+      "transitions": [
+        "flag_set__idle__t1",
+        "idle__flag_set__t1"
+      ]
+    },
+    "critical__flag_set__t1": {
+      "labels": [
+        "P0_in_CS",
+        "flag0",
+        "flag1",
+        "turn_is_1"
+      ],
+      "transitions": [
+        "idle__flag_set__t1",
+        "critical__waiting__t0"
+      ]
+    },
+    "waiting__waiting__t0": {
+      "labels": [
+        "flag0",
+        "flag1"
+      ],
+      "transitions": [
+        "critical__waiting__t0",
+        "waiting__waiting__t0"
+      ]
+    },
+    "waiting__waiting__t1": {
+      "labels": [
+        "flag0",
+        "flag1",
+        "turn_is_1"
+      ],
+      "transitions": [
+        "waiting__waiting__t1",
+        "waiting__critical__t1"
+      ]
+    },
+    "flag_set__critical__t0": {
+      "labels": [
+        "P1_in_CS",
+        "flag0",
+        "flag1"
+      ],
+      "transitions": [
+        "waiting__critical__t1",
+        "flag_set__idle__t0"
+      ]
+    },
+    "flag_set__idle__t1": {
+      "labels": [
+        "flag0",
+        "turn_is_1"
+      ],
+      "transitions": [
+        "waiting__idle__t1",
+        "flag_set__flag_set__t1"
+      ]
+    },
+    "idle__flag_set__t1": {
+      "labels": [
+        "flag1",
+        "turn_is_1"
+      ],
+      "transitions": [
+        "flag_set__flag_set__t1",
+        "idle__waiting__t0"
+      ]
+    },
+    "critical__waiting__t0": {
+      "labels": [
+        "P0_in_CS",
+        "flag0",
+        "flag1"
+      ],
+      "transitions": [
+        "idle__waiting__t0",
+        "critical__waiting__t0"
+      ]
+    },
+    "waiting__critical__t1": {
+      "labels": [
+        "P1_in_CS",
+        "flag0",
+        "flag1",
+        "turn_is_1"
+      ],
+      "transitions": [
+        "waiting__critical__t1",
+        "waiting__idle__t1"
+      ]
+    },
+    "flag_set__flag_set__t1": {
+      "labels": [
+        "flag0",
+        "flag1",
+        "turn_is_1"
+      ],
+      "transitions": [
+        "waiting__flag_set__t1",
+        "flag_set__waiting__t0"
+      ]
+    }
+  }
+}

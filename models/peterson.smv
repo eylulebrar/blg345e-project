@@ -1,0 +1,44 @@
+MODULE main
+IVAR
+  proc : {0, 1};          -- bu adımda hangi süreç hareket ediyor (interleaving)
+
+VAR
+  pc0  : {idle, flag_set, waiting, critical};
+  pc1  : {idle, flag_set, waiting, critical};
+  turn : {0, 1};
+
+DEFINE
+  flag0     := pc0 != idle;
+  flag1     := pc1 != idle;
+  P0_in_CS  := pc0 = critical;
+  P1_in_CS  := pc1 = critical;
+  turn_is_1 := turn = 1;
+
+ASSIGN
+  init(pc0)  := idle;
+  init(pc1)  := idle;
+  init(turn) := 0;
+
+  next(pc0) := case
+    proc = 0 & pc0 = idle                            : flag_set;
+    proc = 0 & pc0 = flag_set                        : waiting;
+    proc = 0 & pc0 = waiting & !(flag1 & turn = 1)   : critical;
+    proc = 0 & pc0 = critical                        : idle;
+    TRUE                                             : pc0;
+  esac;
+
+  next(pc1) := case
+    proc = 1 & pc1 = idle                            : flag_set;
+    proc = 1 & pc1 = flag_set                        : waiting;
+    proc = 1 & pc1 = waiting & !(flag0 & turn = 0)   : critical;
+    proc = 1 & pc1 = critical                        : idle;
+    TRUE                                             : pc1;
+  esac;
+
+  next(turn) := case
+    proc = 0 & pc0 = flag_set : 1;     -- P0: turn = j
+    proc = 1 & pc1 = flag_set : 0;     -- P1: turn = j
+    TRUE                      : turn;
+  esac;
+
+LTLSPEC G !(P0_in_CS & P1_in_CS)       -- iki süreç aynı anda kritik bölgede olamaz
