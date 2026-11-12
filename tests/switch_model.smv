@@ -1,0 +1,12 @@
+MODULE main
+VAR
+  state : {s_off, s_on};
+ASSIGN
+  init(state) := s_off;
+  next(state) :=
+    case
+      state = s_off : {s_on, s_off};
+      state = s_on  : {s_off, s_on};
+    esac;
+DEFINE
+  is_lit := (state = s_on);
