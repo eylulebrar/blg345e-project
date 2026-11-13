@@ -1,0 +1,62 @@
+{
+  "atomic_propositions": ["P0_eating", "P1_eating", "P2_eating", "deadlock"],
+  "initial_states": ["s_TTT"],
+  "states": {
+    "s_TTT": {
+      "labels": [],
+      "transitions": ["s_LTT", "s_TLT", "s_TTL"]
+    },
+    "s_LTT": {
+      "labels": [],
+      "transitions": ["s_ETT", "s_LLT", "s_LTL"]
+    },
+    "s_TLT": {
+      "labels": [],
+      "transitions": ["s_LLT", "s_TLL", "s_TET"]
+    },
+    "s_TTL": {
+      "labels": [],
+      "transitions": ["s_TLL", "s_LTL", "s_TTE"]
+    },
+    "s_ETT": {
+      "labels": ["P0_eating"],
+      "transitions": ["s_TTT", "s_ETL"]
+    },
+    "s_TET": {
+      "labels": ["P1_eating"],
+      "transitions": ["s_TTT", "s_LET"]
+    },
+    "s_TTE": {
+      "labels": ["P2_eating"],
+      "transitions": ["s_TTT", "s_TLE"]
+    },
+    "s_LLT": {
+      "labels": [],
+      "transitions": ["s_LLL", "s_LET"]
+    },
+    "s_LTL": {
+      "labels": [],
+      "transitions": ["s_LLL", "s_ETL"]
+    },
+    "s_TLL": {
+      "labels": [],
+      "transitions": ["s_LLL", "s_TLE"]
+    },
+    "s_ETL": {
+      "labels": ["P0_eating"],
+      "transitions": ["s_TTL"]
+    },
+    "s_LET": {
+      "labels": ["P1_eating"],
+      "transitions": ["s_LTT"]
+    },
+    "s_TLE": {
+      "labels": ["P2_eating"],
+      "transitions": ["s_TLT"]
+    },
+    "s_LLL": {
+      "labels": ["deadlock"],
+      "transitions": ["s_LLL"]
+    }
+  }
+}

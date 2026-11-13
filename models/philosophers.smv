@@ -1,0 +1,58 @@
+-- Dining Philosophers (3 philosophers, 3 forks)
+-- Fork i is the LEFT fork of Pi and the RIGHT fork of P((i+2) mod 3):
+--   P0: left f0, right f1
+--   P1: left f1, right f2
+--   P2: left f2, right f0
+-- Fork availability is derived from the philosophers' local states,
+-- so the global state is just (p0, p1, p2).
+
+MODULE main
+VAR
+  p0 : {thinking, holding_left, eating};
+  p1 : {thinking, holding_left, eating};
+  p2 : {thinking, holding_left, eating};
+
+DEFINE
+  -- fork i is free iff its left-owner Pi is not holding it
+  -- and its right-owner P(i-1) is not eating
+  f0_free := !(p0 = holding_left | p0 = eating) & !(p2 = eating);
+  f1_free := !(p1 = holding_left | p1 = eating) & !(p0 = eating);
+  f2_free := !(p2 = holding_left | p2 = eating) & !(p1 = eating);
+
+  -- required atomic propositions
+  P0_eating := p0 = eating;
+  P1_eating := p1 = eating;
+  P2_eating := p2 = eating;
+  deadlock  := p0 = holding_left & p1 = holding_left & p2 = holding_left;
+
+INIT
+  p0 = thinking & p1 = thinking & p2 = thinking
+
+-- Interleaving semantics: exactly one philosopher performs one action per step.
+TRANS
+  -- P0 moves (P1, P2 unchanged)
+  ( next(p1) = p1 & next(p2) = p2 &
+    ( (p0 = thinking     & f0_free & next(p0) = holding_left) |
+      (p0 = holding_left & f1_free & next(p0) = eating)       |
+      (p0 = eating                 & next(p0) = thinking) ) )
+  |
+  -- P1 moves (P0, P2 unchanged)
+  ( next(p0) = p0 & next(p2) = p2 &
+    ( (p1 = thinking     & f1_free & next(p1) = holding_left) |
+      (p1 = holding_left & f2_free & next(p1) = eating)       |
+      (p1 = eating                 & next(p1) = thinking) ) )
+  |
+  -- P2 moves (P0, P1 unchanged)
+  ( next(p0) = p0 & next(p1) = p1 &
+    ( (p2 = thinking     & f2_free & next(p2) = holding_left) |
+      (p2 = holding_left & f0_free & next(p2) = eating)       |
+      (p2 = eating                 & next(p2) = thinking) ) )
+  |
+  -- Deadlock: all hold their left fork -> self-loop (totality convention)
+  ( deadlock & next(p0) = p0 & next(p1) = p1 & next(p2) = p2 )
+
+-- Sanity checks (expected: all true)
+LTLSPEC G !(P0_eating & P1_eating)
+LTLSPEC G !(P1_eating & P2_eating)
+LTLSPEC G !(P2_eating & P0_eating)
+LTLSPEC G (deadlock -> X deadlock)
