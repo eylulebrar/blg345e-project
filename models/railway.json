@@ -1,0 +1,271 @@
+{
+  "atomic_propositions": [
+    "train_in_crossing",
+    "gate_is_down",
+    "unsafe_state"
+  ],
+  "initial_states": [
+    "Far__Open__Idle"
+  ],
+  "states": {
+    "Far__Open__Idle": {
+      "labels": [],
+      "transitions": [
+        "Far__Open__Idle",
+        "Approaching__Open__Idle"
+      ]
+    },
+    "Approaching__Open__Idle": {
+      "labels": [],
+      "transitions": [
+        "Approaching__Open__ClosingRequested",
+        "InCrossing__Open__ClosingRequested"
+      ]
+    },
+    "Approaching__Open__ClosingRequested": {
+      "labels": [],
+      "transitions": [
+        "Approaching__Lowering__ClosingRequested",
+        "InCrossing__Lowering__ClosingRequested"
+      ]
+    },
+    "InCrossing__Open__ClosingRequested": {
+      "labels": [
+        "train_in_crossing",
+        "unsafe_state"
+      ],
+      "transitions": [
+        "InCrossing__Lowering__ClosingRequested",
+        "Passed__Lowering__ClosingRequested"
+      ]
+    },
+    "Approaching__Lowering__ClosingRequested": {
+      "labels": [],
+      "transitions": [
+        "Approaching__Lowering__ClosingRequested",
+        "Approaching__Closed__ClosingRequested",
+        "InCrossing__Lowering__ClosingRequested",
+        "InCrossing__Closed__ClosingRequested"
+      ]
+    },
+    "InCrossing__Lowering__ClosingRequested": {
+      "labels": [
+        "train_in_crossing",
+        "unsafe_state"
+      ],
+      "transitions": [
+        "InCrossing__Lowering__ClosingRequested",
+        "InCrossing__Closed__ClosingRequested",
+        "Passed__Lowering__ClosingRequested",
+        "Passed__Closed__ClosingRequested"
+      ]
+    },
+    "Passed__Lowering__ClosingRequested": {
+      "labels": [],
+      "transitions": [
+        "Passed__Lowering__OpeningRequested",
+        "Passed__Closed__OpeningRequested",
+        "Far__Lowering__OpeningRequested",
+        "Far__Closed__OpeningRequested"
+      ]
+    },
+    "Approaching__Closed__ClosingRequested": {
+      "labels": [
+        "gate_is_down"
+      ],
+      "transitions": [
+        "Approaching__Closed__ClosingRequested",
+        "InCrossing__Closed__ClosingRequested"
+      ]
+    },
+    "InCrossing__Closed__ClosingRequested": {
+      "labels": [
+        "train_in_crossing",
+        "gate_is_down"
+      ],
+      "transitions": [
+        "InCrossing__Closed__ClosingRequested",
+        "Passed__Closed__ClosingRequested"
+      ]
+    },
+    "Passed__Closed__ClosingRequested": {
+      "labels": [
+        "gate_is_down"
+      ],
+      "transitions": [
+        "Passed__Closed__OpeningRequested",
+        "Far__Closed__OpeningRequested"
+      ]
+    },
+    "Passed__Lowering__OpeningRequested": {
+      "labels": [],
+      "transitions": [
+        "Passed__Lowering__OpeningRequested",
+        "Passed__Closed__OpeningRequested",
+        "Far__Lowering__OpeningRequested",
+        "Far__Closed__OpeningRequested"
+      ]
+    },
+    "Passed__Closed__OpeningRequested": {
+      "labels": [
+        "gate_is_down"
+      ],
+      "transitions": [
+        "Passed__Raising__OpeningRequested",
+        "Far__Raising__OpeningRequested"
+      ]
+    },
+    "Far__Lowering__OpeningRequested": {
+      "labels": [],
+      "transitions": [
+        "Far__Lowering__OpeningRequested",
+        "Far__Closed__OpeningRequested",
+        "Approaching__Lowering__OpeningRequested",
+        "Approaching__Closed__OpeningRequested"
+      ]
+    },
+    "Far__Closed__OpeningRequested": {
+      "labels": [
+        "gate_is_down"
+      ],
+      "transitions": [
+        "Far__Raising__OpeningRequested",
+        "Approaching__Raising__OpeningRequested"
+      ]
+    },
+    "Passed__Raising__OpeningRequested": {
+      "labels": [],
+      "transitions": [
+        "Passed__Raising__OpeningRequested",
+        "Passed__Open__OpeningRequested",
+        "Far__Raising__OpeningRequested",
+        "Far__Open__OpeningRequested"
+      ]
+    },
+    "Far__Raising__OpeningRequested": {
+      "labels": [],
+      "transitions": [
+        "Far__Raising__OpeningRequested",
+        "Far__Open__OpeningRequested",
+        "Approaching__Raising__OpeningRequested",
+        "Approaching__Open__OpeningRequested"
+      ]
+    },
+    "Approaching__Lowering__OpeningRequested": {
+      "labels": [],
+      "transitions": [
+        "Approaching__Lowering__OpeningRequested",
+        "Approaching__Closed__OpeningRequested",
+        "InCrossing__Lowering__OpeningRequested",
+        "InCrossing__Closed__OpeningRequested"
+      ]
+    },
+    "Approaching__Closed__OpeningRequested": {
+      "labels": [
+        "gate_is_down"
+      ],
+      "transitions": [
+        "Approaching__Raising__OpeningRequested",
+        "InCrossing__Raising__OpeningRequested"
+      ]
+    },
+    "Approaching__Raising__OpeningRequested": {
+      "labels": [],
+      "transitions": [
+        "Approaching__Raising__OpeningRequested",
+        "Approaching__Open__OpeningRequested",
+        "InCrossing__Raising__OpeningRequested",
+        "InCrossing__Open__OpeningRequested"
+      ]
+    },
+    "Passed__Open__OpeningRequested": {
+      "labels": [],
+      "transitions": [
+        "Passed__Open__Idle",
+        "Far__Open__Idle"
+      ]
+    },
+    "Far__Open__OpeningRequested": {
+      "labels": [],
+      "transitions": [
+        "Far__Open__Idle",
+        "Approaching__Open__Idle"
+      ]
+    },
+    "Approaching__Open__OpeningRequested": {
+      "labels": [],
+      "transitions": [
+        "Approaching__Open__Idle",
+        "InCrossing__Open__Idle"
+      ]
+    },
+    "InCrossing__Lowering__OpeningRequested": {
+      "labels": [
+        "train_in_crossing",
+        "unsafe_state"
+      ],
+      "transitions": [
+        "InCrossing__Lowering__OpeningRequested",
+        "InCrossing__Closed__OpeningRequested",
+        "Passed__Lowering__OpeningRequested",
+        "Passed__Closed__OpeningRequested"
+      ]
+    },
+    "InCrossing__Closed__OpeningRequested": {
+      "labels": [
+        "train_in_crossing",
+        "gate_is_down"
+      ],
+      "transitions": [
+        "InCrossing__Raising__OpeningRequested",
+        "Passed__Raising__OpeningRequested"
+      ]
+    },
+    "InCrossing__Raising__OpeningRequested": {
+      "labels": [
+        "train_in_crossing",
+        "unsafe_state"
+      ],
+      "transitions": [
+        "InCrossing__Raising__OpeningRequested",
+        "InCrossing__Open__OpeningRequested",
+        "Passed__Raising__OpeningRequested",
+        "Passed__Open__OpeningRequested"
+      ]
+    },
+    "InCrossing__Open__OpeningRequested": {
+      "labels": [
+        "train_in_crossing",
+        "unsafe_state"
+      ],
+      "transitions": [
+        "InCrossing__Open__Idle",
+        "Passed__Open__Idle"
+      ]
+    },
+    "Passed__Open__Idle": {
+      "labels": [],
+      "transitions": [
+        "Passed__Open__Idle",
+        "Far__Open__Idle"
+      ]
+    },
+    "InCrossing__Open__Idle": {
+      "labels": [
+        "train_in_crossing",
+        "unsafe_state"
+      ],
+      "transitions": [
+        "InCrossing__Open__ClosingRequested",
+        "Passed__Open__ClosingRequested"
+      ]
+    },
+    "Passed__Open__ClosingRequested": {
+      "labels": [],
+      "transitions": [
+        "Passed__Lowering__OpeningRequested",
+        "Far__Lowering__OpeningRequested"
+      ]
+    }
+  }
+}

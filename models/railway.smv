@@ -1,0 +1,48 @@
+-- Railway Crossing Controller (synchronous product of Train, Gate, Controller)
+MODULE main
+VAR
+    train : { Far, Approaching, InCrossing, Passed };
+    gate  : { Open, Lowering, Closed, Raising };
+    ctrl  : { Idle, ClosingRequested, OpeningRequested };
+
+ASSIGN
+    init(train) := Far;
+    init(gate)  := Open;
+    init(ctrl)  := Idle;
+
+    -- Train: stays or advances one step; may enter the crossing
+    -- before the gate is closed (fast-train scenario).
+    next(train) :=
+        case
+            train = Far         : { Far, Approaching };
+            train = Approaching : { Approaching, InCrossing };
+            train = InCrossing  : { InCrossing, Passed };
+            train = Passed      : { Passed, Far };
+        esac;
+
+    -- Controller: reacts deterministically to the observed state.
+    next(ctrl) :=
+        case
+            ctrl = Idle & (train = Approaching | train = InCrossing) : ClosingRequested;
+            ctrl = ClosingRequested & train = Passed                 : OpeningRequested;
+            ctrl = OpeningRequested & gate = Open                    : Idle;
+            TRUE                                                     : ctrl;
+        esac;
+
+    -- Gate: must pass through Lowering (>= 1 step) before Closed.
+    next(gate) :=
+        case
+            gate = Open & ctrl = ClosingRequested   : Lowering;
+            gate = Lowering                         : { Lowering, Closed };
+            gate = Closed & ctrl = OpeningRequested : Raising;
+            gate = Raising                          : { Raising, Open };
+            TRUE                                    : gate;
+        esac;
+
+DEFINE
+    train_in_crossing := (train = InCrossing);
+    gate_is_down      := (gate = Closed);
+    unsafe_state      := (train = InCrossing) & !(gate = Closed);
+
+-- Safety property (expected to be FALSE: fast-train scenario is reachable)
+INVARSPEC !unsafe_state
