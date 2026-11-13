@@ -1,0 +1,335 @@
+{
+  "atomic_propositions": [
+    "moving",
+    "doors_open",
+    "stalled"
+  ],
+  "initial_states": [
+    "F1__Stationary__Closed__req_none"
+  ],
+  "states": {
+    "F1__Stationary__Closed__req_none": {
+      "labels": [],
+      "transitions": [
+        "F1__Stationary__Closed__req_none",
+        "F1__Stationary__Closed__req_F1",
+        "F1__Stationary__Closed__req_F2",
+        "F1__Stationary__Closed__req_F3"
+      ]
+    },
+    "F1__Stationary__Closed__req_F1": {
+      "labels": [],
+      "transitions": [
+        "F1__Stationary__Opening__req_F1"
+      ]
+    },
+    "F1__Stationary__Closed__req_F2": {
+      "labels": [],
+      "transitions": [
+        "F1__Up__Closed__req_F2"
+      ]
+    },
+    "F1__Stationary__Closed__req_F3": {
+      "labels": [],
+      "transitions": [
+        "F1__Up__Closed__req_F3"
+      ]
+    },
+    "F1__Stationary__Opening__req_F1": {
+      "labels": [],
+      "transitions": [
+        "F1__Stationary__Open__req_F1"
+      ]
+    },
+    "F1__Up__Closed__req_F2": {
+      "labels": [
+        "moving"
+      ],
+      "transitions": [
+        "F1_2__Up__Closed__req_F2"
+      ]
+    },
+    "F1__Up__Closed__req_F3": {
+      "labels": [
+        "moving"
+      ],
+      "transitions": [
+        "F1_2__Up__Closed__req_F3"
+      ]
+    },
+    "F1__Stationary__Open__req_F1": {
+      "labels": [
+        "doors_open"
+      ],
+      "transitions": [
+        "F1__Stationary__Closing__req_F1"
+      ]
+    },
+    "F1_2__Up__Closed__req_F2": {
+      "labels": [
+        "moving"
+      ],
+      "transitions": [
+        "F2__Up__Closed__req_F2",
+        "F1_2__Stationary__Closed__req_F2__STALLED"
+      ]
+    },
+    "F1_2__Up__Closed__req_F3": {
+      "labels": [
+        "moving"
+      ],
+      "transitions": [
+        "F2__Up__Closed__req_F3",
+        "F1_2__Stationary__Closed__req_F3__STALLED"
+      ]
+    },
+    "F1__Stationary__Closing__req_F1": {
+      "labels": [],
+      "transitions": [
+        "F1__Stationary__Closed__req_none"
+      ]
+    },
+    "F2__Up__Closed__req_F2": {
+      "labels": [
+        "moving"
+      ],
+      "transitions": [
+        "F2__Stationary__Closed__req_F2"
+      ]
+    },
+    "F1_2__Stationary__Closed__req_F2__STALLED": {
+      "labels": [
+        "stalled"
+      ],
+      "transitions": [
+        "F1_2__Stationary__Closed__req_F2__STALLED"
+      ]
+    },
+    "F2__Up__Closed__req_F3": {
+      "labels": [
+        "moving"
+      ],
+      "transitions": [
+        "F2_3__Up__Closed__req_F3"
+      ]
+    },
+    "F1_2__Stationary__Closed__req_F3__STALLED": {
+      "labels": [
+        "stalled"
+      ],
+      "transitions": [
+        "F1_2__Stationary__Closed__req_F3__STALLED"
+      ]
+    },
+    "F2__Stationary__Closed__req_F2": {
+      "labels": [],
+      "transitions": [
+        "F2__Stationary__Opening__req_F2"
+      ]
+    },
+    "F2_3__Up__Closed__req_F3": {
+      "labels": [
+        "moving"
+      ],
+      "transitions": [
+        "F3__Up__Closed__req_F3",
+        "F2_3__Stationary__Closed__req_F3__STALLED"
+      ]
+    },
+    "F2__Stationary__Opening__req_F2": {
+      "labels": [],
+      "transitions": [
+        "F2__Stationary__Open__req_F2"
+      ]
+    },
+    "F3__Up__Closed__req_F3": {
+      "labels": [
+        "moving"
+      ],
+      "transitions": [
+        "F3__Stationary__Closed__req_F3"
+      ]
+    },
+    "F2_3__Stationary__Closed__req_F3__STALLED": {
+      "labels": [
+        "stalled"
+      ],
+      "transitions": [
+        "F2_3__Stationary__Closed__req_F3__STALLED"
+      ]
+    },
+    "F2__Stationary__Open__req_F2": {
+      "labels": [
+        "doors_open"
+      ],
+      "transitions": [
+        "F2__Stationary__Closing__req_F2"
+      ]
+    },
+    "F3__Stationary__Closed__req_F3": {
+      "labels": [],
+      "transitions": [
+        "F3__Stationary__Opening__req_F3"
+      ]
+    },
+    "F2__Stationary__Closing__req_F2": {
+      "labels": [],
+      "transitions": [
+        "F2__Stationary__Closed__req_none"
+      ]
+    },
+    "F3__Stationary__Opening__req_F3": {
+      "labels": [],
+      "transitions": [
+        "F3__Stationary__Open__req_F3"
+      ]
+    },
+    "F2__Stationary__Closed__req_none": {
+      "labels": [],
+      "transitions": [
+        "F2__Stationary__Closed__req_none",
+        "F2__Stationary__Closed__req_F1",
+        "F2__Stationary__Closed__req_F2",
+        "F2__Stationary__Closed__req_F3"
+      ]
+    },
+    "F3__Stationary__Open__req_F3": {
+      "labels": [
+        "doors_open"
+      ],
+      "transitions": [
+        "F3__Stationary__Closing__req_F3"
+      ]
+    },
+    "F2__Stationary__Closed__req_F1": {
+      "labels": [],
+      "transitions": [
+        "F2__Down__Closed__req_F1"
+      ]
+    },
+    "F2__Stationary__Closed__req_F3": {
+      "labels": [],
+      "transitions": [
+        "F2__Up__Closed__req_F3"
+      ]
+    },
+    "F3__Stationary__Closing__req_F3": {
+      "labels": [],
+      "transitions": [
+        "F3__Stationary__Closed__req_none"
+      ]
+    },
+    "F2__Down__Closed__req_F1": {
+      "labels": [
+        "moving"
+      ],
+      "transitions": [
+        "F1_2__Down__Closed__req_F1"
+      ]
+    },
+    "F3__Stationary__Closed__req_none": {
+      "labels": [],
+      "transitions": [
+        "F3__Stationary__Closed__req_none",
+        "F3__Stationary__Closed__req_F1",
+        "F3__Stationary__Closed__req_F2",
+        "F3__Stationary__Closed__req_F3"
+      ]
+    },
+    "F1_2__Down__Closed__req_F1": {
+      "labels": [
+        "moving"
+      ],
+      "transitions": [
+        "F1__Down__Closed__req_F1",
+        "F1_2__Stationary__Closed__req_F1__STALLED"
+      ]
+    },
+    "F3__Stationary__Closed__req_F1": {
+      "labels": [],
+      "transitions": [
+        "F3__Down__Closed__req_F1"
+      ]
+    },
+    "F3__Stationary__Closed__req_F2": {
+      "labels": [],
+      "transitions": [
+        "F3__Down__Closed__req_F2"
+      ]
+    },
+    "F1__Down__Closed__req_F1": {
+      "labels": [
+        "moving"
+      ],
+      "transitions": [
+        "F1__Stationary__Closed__req_F1"
+      ]
+    },
+    "F1_2__Stationary__Closed__req_F1__STALLED": {
+      "labels": [
+        "stalled"
+      ],
+      "transitions": [
+        "F1_2__Stationary__Closed__req_F1__STALLED"
+      ]
+    },
+    "F3__Down__Closed__req_F1": {
+      "labels": [
+        "moving"
+      ],
+      "transitions": [
+        "F2_3__Down__Closed__req_F1"
+      ]
+    },
+    "F3__Down__Closed__req_F2": {
+      "labels": [
+        "moving"
+      ],
+      "transitions": [
+        "F2_3__Down__Closed__req_F2"
+      ]
+    },
+    "F2_3__Down__Closed__req_F1": {
+      "labels": [
+        "moving"
+      ],
+      "transitions": [
+        "F2__Down__Closed__req_F1",
+        "F2_3__Stationary__Closed__req_F1__STALLED"
+      ]
+    },
+    "F2_3__Down__Closed__req_F2": {
+      "labels": [
+        "moving"
+      ],
+      "transitions": [
+        "F2__Down__Closed__req_F2",
+        "F2_3__Stationary__Closed__req_F2__STALLED"
+      ]
+    },
+    "F2_3__Stationary__Closed__req_F1__STALLED": {
+      "labels": [
+        "stalled"
+      ],
+      "transitions": [
+        "F2_3__Stationary__Closed__req_F1__STALLED"
+      ]
+    },
+    "F2__Down__Closed__req_F2": {
+      "labels": [
+        "moving"
+      ],
+      "transitions": [
+        "F2__Stationary__Closed__req_F2"
+      ]
+    },
+    "F2_3__Stationary__Closed__req_F2__STALLED": {
+      "labels": [
+        "stalled"
+      ],
+      "transitions": [
+        "F2_3__Stationary__Closed__req_F2__STALLED"
+      ]
+    }
+  }
+}

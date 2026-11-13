@@ -1,0 +1,106 @@
+-- Three-Floor Elevator Controller
+-- One transition = one controller step. The environment chooses a new
+-- floor call and the emergency button in every step (IVAR); they only
+-- matter when the cabin is idle / moving between floors respectively.
+MODULE main
+IVAR
+    call      : { none, F1, F2, F3 };
+    emergency : boolean;
+
+VAR
+    pos     : { F1, F1_2, F2, F2_3, F3 };   -- F1_2, F2_3 = between floors
+    dir     : { Up, Down, Stationary };
+    door    : { Closed, Opening, Open, Closing };
+    req     : { none, F1, F2, F3 };          -- active destination request
+    stalled : boolean;                       -- emergency stop happened
+
+DEFINE
+    at_floor  := pos in { F1, F2, F3 };
+    idle      := !stalled & dir = Stationary & door = Closed & req = none;
+    req_above := (pos = F1   & req in { F2, F3 }) |
+                 (pos = F1_2 & req in { F2, F3 }) |
+                 (pos = F2   & req = F3) |
+                 (pos = F2_3 & req = F3);
+    req_below := (pos = F3   & req in { F1, F2 }) |
+                 (pos = F2_3 & req in { F1, F2 }) |
+                 (pos = F2   & req = F1) |
+                 (pos = F1_2 & req = F1);
+    stall_now := dir != Stationary & !at_floor & emergency;
+
+    moving     := dir != Stationary;
+    doors_open := door = Open;
+    -- 'stalled' is the state variable itself
+
+ASSIGN
+    init(pos)     := F1;
+    init(dir)     := Stationary;
+    init(door)    := Closed;
+    init(req)     := none;
+    init(stalled) := FALSE;
+
+    -- Stalled is terminal: once entered it never changes.
+    next(stalled) :=
+        case
+            stalled | stall_now : TRUE;
+            TRUE                : FALSE;
+        esac;
+
+    next(dir) :=
+        case
+            stalled | stall_now                          : Stationary;
+            dir = Stationary & door = Closed & req_above : Up;
+            dir = Stationary & door = Closed & req_below : Down;
+            dir != Stationary & pos = req                : Stationary;  -- arrived: stop
+            TRUE                                         : dir;
+        esac;
+
+    -- Cabin advances one position per step; never with doors open
+    -- (dir becomes Up/Down only when door = Closed).
+    next(pos) :=
+        case
+            stall_now               : pos;
+            dir = Up & pos != req   :
+                case
+                    pos = F1   : F1_2;
+                    pos = F1_2 : F2;
+                    pos = F2   : F2_3;
+                    pos = F2_3 : F3;
+                    TRUE       : pos;
+                esac;
+            dir = Down & pos != req :
+                case
+                    pos = F3   : F2_3;
+                    pos = F2_3 : F2;
+                    pos = F2   : F1_2;
+                    pos = F1_2 : F1;
+                    TRUE       : pos;
+                esac;
+            TRUE                    : pos;
+        esac;
+
+    -- Doors open only at the requested floor while stationary.
+    next(door) :=
+        case
+            !stalled & dir = Stationary & at_floor & door = Closed & pos = req : Opening;
+            door = Opening : Open;
+            door = Open    : Closing;
+            door = Closing : Closed;
+            TRUE           : door;
+        esac;
+
+    -- A request is accepted only when idle and cleared when the doors close.
+    next(req) :=
+        case
+            idle           : call;
+            door = Closing : none;
+            TRUE           : req;
+        esac;
+
+-- Required: no reachable state is both moving and has its doors open.
+INVARSPEC !(moving & doors_open)
+-- Cabin never moves unless the doors are fully closed.
+INVARSPEC moving -> door = Closed
+-- Stalled only between floors, not moving, doors locked.
+INVARSPEC stalled -> (!at_floor & !moving & door = Closed)
+-- Stalled is terminal.
+LTLSPEC G (stalled -> G stalled)
