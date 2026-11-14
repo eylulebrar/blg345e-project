@@ -1,0 +1,68 @@
+
+-- sender (s_bit) //// receiver (r_bit)
+
+MODULE main
+IVAR
+    channel : { deliver, lose, corrupt };
+
+VAR
+    s_bit : { 0, 1 };
+    r_bit : { 0, 1 };
+    phase : {
+        ready,
+        data_sent,
+        pkt_lost,
+        pkt_corrupted,
+        ack_sent,
+        ack_rcvd,
+        timeout
+    };
+
+DEFINE
+    packet_lost  := (phase = pkt_lost);
+    ack_received := (phase = ack_rcvd);
+    bit_error    := (phase = pkt_corrupted);
+
+ASSIGN
+    init(s_bit) := 0;
+    init(r_bit) := 0;
+    init(phase) := ready;
+
+    next(phase) :=
+        case
+            phase = ready                            : data_sent;
+            phase = data_sent & channel = deliver    : ack_sent;
+            phase = data_sent & channel = lose       : pkt_lost;
+            phase = data_sent & channel = corrupt    : pkt_corrupted;
+            phase = pkt_lost                         : timeout;
+            phase = pkt_corrupted                    : timeout;
+            phase = ack_sent & channel = deliver     : ack_rcvd;
+            phase = ack_sent & channel != deliver    : timeout;
+            phase = ack_rcvd                         : ready;
+            phase = timeout                          : data_sent;
+        esac;
+
+    -- Receiver updates its expected sequence bit only when an uncorrupted
+    -- packet arrives whose bit matches r_bit (duplicate packets are ignored).
+    next(r_bit) :=
+        case
+            phase = data_sent & channel = deliver & s_bit = r_bit : 1 - r_bit;
+            TRUE                                                  : r_bit;
+        esac;
+
+    -- Sender advances its sequence bit only after receiving a valid ACK.
+    next(s_bit) :=
+        case
+            phase = ack_rcvd : 1 - s_bit;
+            TRUE             : s_bit;
+        esac;
+
+-- Sanity properties:
+-- 1. Outcomes packet_lost, bit_error, and ack_received are mutually exclusive.
+INVARSPEC !(packet_lost & bit_error)
+INVARSPEC !(packet_lost & ack_received)
+INVARSPEC !(bit_error & ack_received)
+
+-- 2. Every lost packet or bit error immediately enters the timeout-retransmit path.
+LTLSPEC G (packet_lost -> X (phase = timeout))
+LTLSPEC G (bit_error   -> X (phase = timeout))
