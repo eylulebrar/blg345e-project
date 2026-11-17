@@ -1,0 +1,3 @@
+$ ./my_checker --parse tests/test7_empty_initial.json
+[SEMANTIC ERROR]: 'initial_states' must contain at least one state.
+(exit code: 1)

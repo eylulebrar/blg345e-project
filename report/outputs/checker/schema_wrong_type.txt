@@ -1,0 +1,3 @@
+$ ./my_checker --parse tests/schema_wrong_type.json
+[SCHEMA ERROR]: 'atomic_propositions' must be an array, got string
+(exit code: 1)

@@ -1,0 +1,3 @@
+$ ./my_checker --parse tests/test6_empty_states.json
+[SEMANTIC ERROR]: Model declares no states ('states' is empty).
+(exit code: 1)

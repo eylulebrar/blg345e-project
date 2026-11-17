@@ -1,7 +1,7 @@
 digraph G {
-  rankdir=LR;
+  rankdir=TB; nodesep=0.12; ranksep=0.25;
   label="peterson"; labelloc=t; fontsize=20; fontname="Helvetica";
-  node [shape=box, style=rounded, fontname="Helvetica", fontsize=11];
+  node [shape=box, style=rounded, fontname="Helvetica", fontsize=12];
   edge [arrowsize=0.7];
   __start0 [shape=point, width=0.08];
   __start0 -> "idle__idle__t0";
@@ -11,19 +11,19 @@ digraph G {
   "waiting__idle__t1" [label="waiting__idle__t1\n{flag0, turn_is_1}"];
   "flag_set__flag_set__t0" [label="flag_set__flag_set__t0\n{flag0, flag1}"];
   "idle__waiting__t0" [label="idle__waiting__t0\n{flag1}"];
-  "critical__idle__t1" [label="critical__idle__t1\n{P0_in_CS, flag0, turn_is_1}"];
+  "critical__idle__t1" [label="critical__idle__t1\n{P0_in_CS, flag0, turn_is_1}", style="rounded,filled", fillcolor="#cdebc6"];
   "waiting__flag_set__t1" [label="waiting__flag_set__t1\n{flag0, flag1, turn_is_1}"];
   "flag_set__waiting__t0" [label="flag_set__waiting__t0\n{flag0, flag1}"];
-  "idle__critical__t0" [label="idle__critical__t0\n{P1_in_CS, flag1}"];
+  "idle__critical__t0" [label="idle__critical__t0\n{P1_in_CS, flag1}", style="rounded,filled", fillcolor="#cdebc6"];
   "idle__idle__t1" [label="idle__idle__t1\n{turn_is_1}"];
-  "critical__flag_set__t1" [label="critical__flag_set__t1\n{P0_in_CS, flag0, flag1, turn_is_1}"];
+  "critical__flag_set__t1" [label="critical__flag_set__t1\n{P0_in_CS, flag0, flag1, turn_is_1}", style="rounded,filled", fillcolor="#cdebc6"];
   "waiting__waiting__t0" [label="waiting__waiting__t0\n{flag0, flag1}"];
   "waiting__waiting__t1" [label="waiting__waiting__t1\n{flag0, flag1, turn_is_1}"];
-  "flag_set__critical__t0" [label="flag_set__critical__t0\n{P1_in_CS, flag0, flag1}"];
+  "flag_set__critical__t0" [label="flag_set__critical__t0\n{P1_in_CS, flag0, flag1}", style="rounded,filled", fillcolor="#cdebc6"];
   "flag_set__idle__t1" [label="flag_set__idle__t1\n{flag0, turn_is_1}"];
   "idle__flag_set__t1" [label="idle__flag_set__t1\n{flag1, turn_is_1}"];
-  "critical__waiting__t0" [label="critical__waiting__t0\n{P0_in_CS, flag0, flag1}"];
-  "waiting__critical__t1" [label="waiting__critical__t1\n{P1_in_CS, flag0, flag1, turn_is_1}"];
+  "critical__waiting__t0" [label="critical__waiting__t0\n{P0_in_CS, flag0, flag1}", style="rounded,filled", fillcolor="#cdebc6"];
+  "waiting__critical__t1" [label="waiting__critical__t1\n{P1_in_CS, flag0, flag1, turn_is_1}", style="rounded,filled", fillcolor="#cdebc6"];
   "flag_set__flag_set__t1" [label="flag_set__flag_set__t1\n{flag0, flag1, turn_is_1}"];
   "idle__idle__t0" -> "flag_set__idle__t0";
   "idle__idle__t0" -> "idle__flag_set__t0";

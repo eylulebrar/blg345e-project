@@ -1,0 +1,121 @@
+######################################################################
+system diameter: 9
+reachable states: 29 (2^4.85798) out of 48 (2^5.58496)
+  ------- State    1 ------
+  train = Far
+  gate = Open
+  ctrl = OpeningRequested
+  ------- State    2 ------
+  train = Far
+  gate = Open
+  ctrl = Idle
+  ------- State    3 ------
+  train = Far
+  gate = Closed
+  ctrl = OpeningRequested
+  ------- State    4 ------
+  train = Far
+  gate = Raising
+  ctrl = OpeningRequested
+  ------- State    5 ------
+  train = Far
+  gate = Lowering
+  ctrl = OpeningRequested
+  ------- State    6 ------
+  train = InCrossing
+  gate = Open
+  ctrl = OpeningRequested
+  ------- State    7 ------
+  train = InCrossing
+  gate = Open
+  ctrl = Idle
+  ------- State    8 ------
+  train = InCrossing
+  gate = Open
+  ctrl = ClosingRequested
+  ------- State    9 ------
+  train = InCrossing
+  gate = Closed
+  ctrl = OpeningRequested
+  ------- State   10 ------
+  train = InCrossing
+  gate = Closed
+  ctrl = ClosingRequested
+  ------- State   11 ------
+  train = InCrossing
+  gate = Lowering
+  ctrl = OpeningRequested
+  ------- State   12 ------
+  train = InCrossing
+  gate = Lowering
+  ctrl = ClosingRequested
+  ------- State   13 ------
+  train = InCrossing
+  gate = Raising
+  ctrl = OpeningRequested
+  ------- State   14 ------
+  train = Passed
+  gate = Open
+  ctrl = OpeningRequested
+  ------- State   15 ------
+  train = Approaching
+  gate = Open
+  ctrl = OpeningRequested
+  ------- State   16 ------
+  train = Passed
+  gate = Open
+  ctrl = Idle
+  ------- State   17 ------
+  train = Approaching
+  gate = Open
+  ctrl = Idle
+  ------- State   18 ------
+  train = Passed
+  gate = Open
+  ctrl = ClosingRequested
+  ------- State   19 ------
+  train = Approaching
+  gate = Open
+  ctrl = ClosingRequested
+  ------- State   20 ------
+  train = Passed
+  gate = Closed
+  ctrl = OpeningRequested
+  ------- State   21 ------
+  train = Approaching
+  gate = Closed
+  ctrl = OpeningRequested
+  ------- State   22 ------
+  train = Passed
+  gate = Closed
+  ctrl = ClosingRequested
+  ------- State   23 ------
+  train = Approaching
+  gate = Closed
+  ctrl = ClosingRequested
+  ------- State   24 ------
+  train = Passed
+  gate = Lowering
+  ctrl = OpeningRequested
+  ------- State   25 ------
+  train = Approaching
+  gate = Lowering
+  ctrl = OpeningRequested
+  ------- State   26 ------
+  train = Passed
+  gate = Lowering
+  ctrl = ClosingRequested
+  ------- State   27 ------
+  train = Approaching
+  gate = Lowering
+  ctrl = ClosingRequested
+  ------- State   28 ------
+  train = Passed
+  gate = Raising
+  ctrl = OpeningRequested
+  ------- State   29 ------
+  train = Approaching
+  gate = Raising
+  ctrl = OpeningRequested
+  -------------------------
+######################################################################

@@ -1,0 +1,10 @@
+[philosophers] NuSMV reachable states: 14, JSON states: 14, common: 14
+[philosophers] state sets are identical
+[peterson] NuSMV reachable states: 20, JSON states: 20, common: 20
+[peterson] state sets are identical
+[abp] NuSMV reachable states: 22, JSON states: 22, common: 22
+[abp] state sets are identical
+[railway] NuSMV reachable states: 29, JSON states: 29, common: 29
+[railway] state sets are identical
+[elevator] NuSMV reachable states: 43, JSON states: 43, common: 43
+[elevator] state sets are identical

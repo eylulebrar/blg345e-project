@@ -1,0 +1,3 @@
+$ ./my_checker --parse tests/broken.json
+[SYNTAX ERROR]: Invalid JSON at line 1, column 38: Expecting property name enclosed in double quotes
+(exit code: 1)

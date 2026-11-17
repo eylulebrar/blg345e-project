@@ -1,0 +1,8 @@
+$ NuSMV -int models/peterson.smv
+NuSMV > print_reachable_states
+######################################################################
+system diameter: 7
+reachable states: 20 (2^4.32193) out of 32 (2^5)
+######################################################################
+NuSMV > check_ltlspec
+-- specification  G !(P0_in_CS & P1_in_CS)  is true

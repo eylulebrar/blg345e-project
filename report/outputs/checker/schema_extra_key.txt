@@ -1,0 +1,3 @@
+$ ./my_checker --parse tests/schema_extra_key.json
+[SCHEMA ERROR]: Top-level object contains unexpected key(s): foo
+(exit code: 1)

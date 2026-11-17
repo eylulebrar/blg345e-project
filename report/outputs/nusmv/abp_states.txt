@@ -1,0 +1,93 @@
+######################################################################
+system diameter: 10
+reachable states: 22 (2^4.45943) out of 28 (2^4.80735)
+  ------- State    1 ------
+  s_bit = 0
+  r_bit = 0
+  phase = ready
+  ------- State    2 ------
+  s_bit = 0
+  r_bit = 0
+  phase = timeout
+  ------- State    3 ------
+  s_bit = 0
+  r_bit = 0
+  phase = pkt_lost
+  ------- State    4 ------
+  s_bit = 0
+  r_bit = 0
+  phase = pkt_corrupted
+  ------- State    5 ------
+  s_bit = 0
+  r_bit = 0
+  phase = data_sent
+  ------- State    6 ------
+  s_bit = 0
+  r_bit = 1
+  phase = ack_sent
+  ------- State    7 ------
+  s_bit = 0
+  r_bit = 1
+  phase = timeout
+  ------- State    8 ------
+  s_bit = 0
+  r_bit = 1
+  phase = pkt_lost
+  ------- State    9 ------
+  s_bit = 0
+  r_bit = 1
+  phase = ack_rcvd
+  ------- State   10 ------
+  s_bit = 0
+  r_bit = 1
+  phase = data_sent
+  ------- State   11 ------
+  s_bit = 0
+  r_bit = 1
+  phase = pkt_corrupted
+  ------- State   12 ------
+  s_bit = 1
+  r_bit = 0
+  phase = ack_sent
+  ------- State   13 ------
+  s_bit = 1
+  r_bit = 0
+  phase = timeout
+  ------- State   14 ------
+  s_bit = 1
+  r_bit = 0
+  phase = pkt_lost
+  ------- State   15 ------
+  s_bit = 1
+  r_bit = 0
+  phase = ack_rcvd
+  ------- State   16 ------
+  s_bit = 1
+  r_bit = 0
+  phase = data_sent
+  ------- State   17 ------
+  s_bit = 1
+  r_bit = 0
+  phase = pkt_corrupted
+  ------- State   18 ------
+  s_bit = 1
+  r_bit = 1
+  phase = ready
+  ------- State   19 ------
+  s_bit = 1
+  r_bit = 1
+  phase = timeout
+  ------- State   20 ------
+  s_bit = 1
+  r_bit = 1
+  phase = pkt_lost
+  ------- State   21 ------
+  s_bit = 1
+  r_bit = 1
+  phase = pkt_corrupted
+  ------- State   22 ------
+  s_bit = 1
+  r_bit = 1
+  phase = data_sent
+  -------------------------
+######################################################################

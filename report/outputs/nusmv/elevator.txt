@@ -1,0 +1,12 @@
+$ NuSMV -int models/elevator.smv
+NuSMV > print_reachable_states
+######################################################################
+system diameter: 16
+reachable states: 43 (2^5.42626) out of 480 (2^8.90689)
+######################################################################
+NuSMV > check_invar
+-- invariant !(moving & doors_open)  is true
+-- invariant (moving -> door = Closed)  is true
+-- invariant (stalled -> ((!at_floor & !moving) & door = Closed))  is true
+NuSMV > check_ltlspec
+-- specification  G (stalled ->  G stalled)  is true

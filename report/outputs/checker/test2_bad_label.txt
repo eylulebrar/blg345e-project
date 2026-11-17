@@ -1,0 +1,3 @@
+$ ./my_checker --parse tests/test2_bad_label.json
+[SEMANTIC ERROR]: State 's_off' uses undeclared atomic proposition 'is_dark'.
+(exit code: 1)

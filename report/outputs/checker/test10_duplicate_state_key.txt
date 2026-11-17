@@ -1,0 +1,3 @@
+$ ./my_checker --parse tests/test10_duplicate_state_key.json
+[SEMANTIC ERROR]: Duplicate key 's_on' declared more than once.
+(exit code: 1)

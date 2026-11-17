@@ -1,0 +1,6 @@
+$ NuSMV -int tests/switch_model.smv
+NuSMV > print_reachable_states
+######################################################################
+system diameter: 2
+reachable states: 2 (2^1) out of 2 (2^1)
+######################################################################

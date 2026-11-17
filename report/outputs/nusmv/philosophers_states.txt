@@ -1,0 +1,61 @@
+######################################################################
+system diameter: 4
+reachable states: 14 (2^3.80735) out of 27 (2^4.75489)
+  ------- State    1 ------
+  p0 = thinking
+  p1 = thinking
+  p2 = eating
+  ------- State    2 ------
+  p0 = thinking
+  p1 = thinking
+  p2 = thinking
+  ------- State    3 ------
+  p0 = thinking
+  p1 = thinking
+  p2 = holding_left
+  ------- State    4 ------
+  p0 = thinking
+  p1 = eating
+  p2 = thinking
+  ------- State    5 ------
+  p0 = thinking
+  p1 = holding_left
+  p2 = eating
+  ------- State    6 ------
+  p0 = thinking
+  p1 = holding_left
+  p2 = thinking
+  ------- State    7 ------
+  p0 = thinking
+  p1 = holding_left
+  p2 = holding_left
+  ------- State    8 ------
+  p0 = eating
+  p1 = thinking
+  p2 = holding_left
+  ------- State    9 ------
+  p0 = eating
+  p1 = thinking
+  p2 = thinking
+  ------- State   10 ------
+  p0 = holding_left
+  p1 = thinking
+  p2 = holding_left
+  ------- State   11 ------
+  p0 = holding_left
+  p1 = thinking
+  p2 = thinking
+  ------- State   12 ------
+  p0 = holding_left
+  p1 = eating
+  p2 = thinking
+  ------- State   13 ------
+  p0 = holding_left
+  p1 = holding_left
+  p2 = holding_left
+  ------- State   14 ------
+  p0 = holding_left
+  p1 = holding_left
+  p2 = thinking
+  -------------------------
+######################################################################

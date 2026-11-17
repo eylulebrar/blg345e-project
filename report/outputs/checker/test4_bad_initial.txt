@@ -1,0 +1,3 @@
+$ ./my_checker --parse tests/test4_bad_initial.json
+[SEMANTIC ERROR]: Initial state 's_start' is not declared in 'states'.
+(exit code: 1)

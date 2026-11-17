@@ -1,7 +1,7 @@
 digraph G {
-  rankdir=LR;
+  rankdir=TB; nodesep=0.12; ranksep=0.25;
   label="switch_model"; labelloc=t; fontsize=20; fontname="Helvetica";
-  node [shape=box, style=rounded, fontname="Helvetica", fontsize=11];
+  node [shape=box, style=rounded, fontname="Helvetica", fontsize=12];
   edge [arrowsize=0.7];
   __start0 [shape=point, width=0.08];
   __start0 -> "s_off";

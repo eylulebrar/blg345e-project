@@ -1,0 +1,3 @@
+$ ./my_checker --parse tests/schema_missing_key.json
+[SCHEMA ERROR]: Top-level object is missing required key(s): initial_states
+(exit code: 1)

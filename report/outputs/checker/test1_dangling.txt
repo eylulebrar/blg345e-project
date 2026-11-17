@@ -1,0 +1,3 @@
+$ ./my_checker --parse tests/test1_dangling.json
+[SEMANTIC ERROR]: State 's_on' references undeclared state 's_ghost'.
+(exit code: 1)

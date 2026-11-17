@@ -1,0 +1,13 @@
+$ NuSMV -int models/abp.smv
+NuSMV > print_reachable_states
+######################################################################
+system diameter: 10
+reachable states: 22 (2^4.45943) out of 28 (2^4.80735)
+######################################################################
+NuSMV > check_invar
+-- invariant !(packet_lost & bit_error)  is true
+-- invariant !(packet_lost & ack_received)  is true
+-- invariant !(bit_error & ack_received)  is true
+NuSMV > check_ltlspec
+-- specification  G (packet_lost ->  X phase = timeout)  is true
+-- specification  G (bit_error ->  X phase = timeout)  is true

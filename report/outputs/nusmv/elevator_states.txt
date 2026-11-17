@@ -1,0 +1,263 @@
+######################################################################
+system diameter: 16
+reachable states: 43 (2^5.42626) out of 480 (2^8.90689)
+  ------- State    1 ------
+  pos = F1
+  dir = Stationary
+  door = Closed
+  req = none
+  stalled = FALSE
+  ------- State    2 ------
+  pos = F1
+  dir = Stationary
+  door = Closed
+  req = F2
+  stalled = FALSE
+  ------- State    3 ------
+  pos = F1
+  dir = Up
+  door = Closed
+  req = F2
+  stalled = FALSE
+  ------- State    4 ------
+  pos = F3
+  dir = Stationary
+  door = Closed
+  req = none
+  stalled = FALSE
+  ------- State    5 ------
+  pos = F3
+  dir = Stationary
+  door = Closed
+  req = F2
+  stalled = FALSE
+  ------- State    6 ------
+  pos = F3
+  dir = Down
+  door = Closed
+  req = F2
+  stalled = FALSE
+  ------- State    7 ------
+  pos = F1
+  dir = Stationary
+  door = Closing
+  req = F1
+  stalled = FALSE
+  ------- State    8 ------
+  pos = F1
+  dir = Stationary
+  door = Open
+  req = F1
+  stalled = FALSE
+  ------- State    9 ------
+  pos = F1
+  dir = Stationary
+  door = Opening
+  req = F1
+  stalled = FALSE
+  ------- State   10 ------
+  pos = F1
+  dir = Stationary
+  door = Closed
+  req = F1
+  stalled = FALSE
+  ------- State   11 ------
+  pos = F1
+  dir = Down
+  door = Closed
+  req = F1
+  stalled = FALSE
+  ------- State   12 ------
+  pos = F1
+  dir = Stationary
+  door = Closed
+  req = F3
+  stalled = FALSE
+  ------- State   13 ------
+  pos = F1
+  dir = Up
+  door = Closed
+  req = F3
+  stalled = FALSE
+  ------- State   14 ------
+  pos = F3
+  dir = Stationary
+  door = Closed
+  req = F1
+  stalled = FALSE
+  ------- State   15 ------
+  pos = F3
+  dir = Down
+  door = Closed
+  req = F1
+  stalled = FALSE
+  ------- State   16 ------
+  pos = F3
+  dir = Up
+  door = Closed
+  req = F3
+  stalled = FALSE
+  ------- State   17 ------
+  pos = F3
+  dir = Stationary
+  door = Closing
+  req = F3
+  stalled = FALSE
+  ------- State   18 ------
+  pos = F3
+  dir = Stationary
+  door = Open
+  req = F3
+  stalled = FALSE
+  ------- State   19 ------
+  pos = F3
+  dir = Stationary
+  door = Opening
+  req = F3
+  stalled = FALSE
+  ------- State   20 ------
+  pos = F3
+  dir = Stationary
+  door = Closed
+  req = F3
+  stalled = FALSE
+  ------- State   21 ------
+  pos = F2
+  dir = Stationary
+  door = Closed
+  req = none
+  stalled = FALSE
+  ------- State   22 ------
+  pos = F2
+  dir = Up
+  door = Closed
+  req = F2
+  stalled = FALSE
+  ------- State   23 ------
+  pos = F2
+  dir = Stationary
+  door = Closing
+  req = F2
+  stalled = FALSE
+  ------- State   24 ------
+  pos = F2
+  dir = Stationary
+  door = Open
+  req = F2
+  stalled = FALSE
+  ------- State   25 ------
+  pos = F2
+  dir = Stationary
+  door = Opening
+  req = F2
+  stalled = FALSE
+  ------- State   26 ------
+  pos = F2
+  dir = Stationary
+  door = Closed
+  req = F2
+  stalled = FALSE
+  ------- State   27 ------
+  pos = F2
+  dir = Down
+  door = Closed
+  req = F2
+  stalled = FALSE
+  ------- State   28 ------
+  pos = F2
+  dir = Stationary
+  door = Closed
+  req = F1
+  stalled = FALSE
+  ------- State   29 ------
+  pos = F2
+  dir = Down
+  door = Closed
+  req = F1
+  stalled = FALSE
+  ------- State   30 ------
+  pos = F2
+  dir = Stationary
+  door = Closed
+  req = F3
+  stalled = FALSE
+  ------- State   31 ------
+  pos = F2
+  dir = Up
+  door = Closed
+  req = F3
+  stalled = FALSE
+  ------- State   32 ------
+  pos = F1_2
+  dir = Up
+  door = Closed
+  req = F2
+  stalled = FALSE
+  ------- State   33 ------
+  pos = F1_2
+  dir = Stationary
+  door = Closed
+  req = F2
+  stalled = TRUE
+  ------- State   34 ------
+  pos = F1_2
+  dir = Stationary
+  door = Closed
+  req = F1
+  stalled = TRUE
+  ------- State   35 ------
+  pos = F1_2
+  dir = Down
+  door = Closed
+  req = F1
+  stalled = FALSE
+  ------- State   36 ------
+  pos = F1_2
+  dir = Up
+  door = Closed
+  req = F3
+  stalled = FALSE
+  ------- State   37 ------
+  pos = F1_2
+  dir = Stationary
+  door = Closed
+  req = F3
+  stalled = TRUE
+  ------- State   38 ------
+  pos = F2_3
+  dir = Stationary
+  door = Closed
+  req = F2
+  stalled = TRUE
+  ------- State   39 ------
+  pos = F2_3
+  dir = Down
+  door = Closed
+  req = F2
+  stalled = FALSE
+  ------- State   40 ------
+  pos = F2_3
+  dir = Stationary
+  door = Closed
+  req = F1
+  stalled = TRUE
+  ------- State   41 ------
+  pos = F2_3
+  dir = Down
+  door = Closed
+  req = F1
+  stalled = FALSE
+  ------- State   42 ------
+  pos = F2_3
+  dir = Up
+  door = Closed
+  req = F3
+  stalled = FALSE
+  ------- State   43 ------
+  pos = F2_3
+  dir = Stationary
+  door = Closed
+  req = F3
+  stalled = TRUE
+  -------------------------
+######################################################################

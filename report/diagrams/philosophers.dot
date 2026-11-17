@@ -1,7 +1,7 @@
 digraph G {
-  rankdir=LR;
+  rankdir=TB; nodesep=0.12; ranksep=0.25;
   label="philosophers"; labelloc=t; fontsize=20; fontname="Helvetica";
-  node [shape=box, style=rounded, fontname="Helvetica", fontsize=11];
+  node [shape=box, style=rounded, fontname="Helvetica", fontsize=12];
   edge [arrowsize=0.7];
   __start0 [shape=point, width=0.08];
   __start0 -> "s_TTT";
@@ -9,16 +9,16 @@ digraph G {
   "s_LTT" [label="s_LTT\n{∅}"];
   "s_TLT" [label="s_TLT\n{∅}"];
   "s_TTL" [label="s_TTL\n{∅}"];
-  "s_ETT" [label="s_ETT\n{P0_eating}"];
-  "s_TET" [label="s_TET\n{P1_eating}"];
-  "s_TTE" [label="s_TTE\n{P2_eating}"];
+  "s_ETT" [label="s_ETT\n{P0_eating}", style="rounded,filled", fillcolor="#cdebc6"];
+  "s_TET" [label="s_TET\n{P1_eating}", style="rounded,filled", fillcolor="#cdebc6"];
+  "s_TTE" [label="s_TTE\n{P2_eating}", style="rounded,filled", fillcolor="#cdebc6"];
   "s_LLT" [label="s_LLT\n{∅}"];
   "s_LTL" [label="s_LTL\n{∅}"];
   "s_TLL" [label="s_TLL\n{∅}"];
-  "s_ETL" [label="s_ETL\n{P0_eating}"];
-  "s_LET" [label="s_LET\n{P1_eating}"];
-  "s_TLE" [label="s_TLE\n{P2_eating}"];
-  "s_LLL" [label="s_LLL\n{deadlock}"];
+  "s_ETL" [label="s_ETL\n{P0_eating}", style="rounded,filled", fillcolor="#cdebc6"];
+  "s_LET" [label="s_LET\n{P1_eating}", style="rounded,filled", fillcolor="#cdebc6"];
+  "s_TLE" [label="s_TLE\n{P2_eating}", style="rounded,filled", fillcolor="#cdebc6"];
+  "s_LLL" [label="s_LLL\n{deadlock}", style="rounded,filled", fillcolor="#f8c9c4"];
   "s_TTT" -> "s_LTT";
   "s_TTT" -> "s_TLT";
   "s_TTT" -> "s_TTL";

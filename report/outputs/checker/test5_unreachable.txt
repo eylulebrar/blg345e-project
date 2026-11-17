@@ -1,0 +1,7 @@
+$ ./my_checker --parse tests/test5_unreachable.json
+[PARSER]: Loaded tests/test5_unreachable.json successfully.
+[METRICS]: Total declared states: 3
+[METRICS]: Total transitions found: 5
+[REACHABILITY]: Reachable states from initial node(s): 2
+[DIAGNOSTICS]: Unreachable states detected: 1
+(exit code: 0)

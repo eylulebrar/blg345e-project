@@ -1,0 +1,3 @@
+$ ./my_checker --parse tests/test9_duplicate_transition.json
+[SEMANTIC ERROR]: State 's_off' has duplicate transition to 's_on'.
+(exit code: 1)

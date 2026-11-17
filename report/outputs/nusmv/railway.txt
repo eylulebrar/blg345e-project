@@ -1,0 +1,25 @@
+$ NuSMV -int models/railway.smv
+NuSMV > print_reachable_states
+######################################################################
+system diameter: 9
+reachable states: 29 (2^4.85798) out of 48 (2^5.58496)
+######################################################################
+NuSMV > check_invar
+-- invariant !unsafe_state  is false
+-- as demonstrated by the following execution sequence
+Trace Description: AG alpha Counterexample 
+Trace Type: Counterexample 
+  -> State: 1.1 <-
+    train = Far
+    gate = Open
+    ctrl = Idle
+    unsafe_state = FALSE
+    gate_is_down = FALSE
+    train_in_crossing = FALSE
+  -> State: 1.2 <-
+    train = Approaching
+  -> State: 1.3 <-
+    train = InCrossing
+    ctrl = ClosingRequested
+    unsafe_state = TRUE
+    train_in_crossing = TRUE

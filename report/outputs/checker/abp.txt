@@ -1,0 +1,7 @@
+$ ./my_checker --parse models/abp.json
+[PARSER]: Loaded models/abp.json successfully.
+[METRICS]: Total declared states: 22
+[METRICS]: Total transitions found: 32
+[REACHABILITY]: Reachable states from initial node(s): 22
+[DIAGNOSTICS]: Unreachable states detected: 0
+(exit code: 0)

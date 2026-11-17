@@ -1,0 +1,3 @@
+$ ./my_checker --parse tests/schema_bad_state_key.json
+[SCHEMA ERROR]: State 's_off' contains unexpected key(s): color
+(exit code: 1)

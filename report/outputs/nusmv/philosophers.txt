@@ -1,0 +1,11 @@
+$ NuSMV -int models/philosophers.smv
+NuSMV > print_reachable_states
+######################################################################
+system diameter: 4
+reachable states: 14 (2^3.80735) out of 27 (2^4.75489)
+######################################################################
+NuSMV > check_ltlspec
+-- specification  G !(P0_eating & P1_eating)  is true
+-- specification  G !(P1_eating & P2_eating)  is true
+-- specification  G !(P2_eating & P0_eating)  is true
+-- specification  G (deadlock ->  X deadlock)  is true

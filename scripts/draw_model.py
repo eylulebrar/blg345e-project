@@ -5,6 +5,10 @@ Kullanım:
     python3 scripts/draw_model.py models/*.json
 
 Çıktılar report/diagrams/<isim>.dot ve <isim>.png olarak kaydedilir.
+
+Diyagramlar yukarıdan aşağıya (TB) çizilir; bu düzen sayfaya soldan sağa
+düzenden çok daha iyi sığar. Durum adı çok uzun olan modellerde (SPLIT_IDS)
+ad "__" işaretlerinden bölünüp birkaç satıra yazılır, böylece kutular daralır.
 """
 import json
 import os
@@ -14,6 +18,32 @@ import sys
 from collections import deque
 
 OUT_DIR = os.path.join(os.path.dirname(__file__), "..", "report", "diagrams")
+
+# Durum adı "__" ile bölünüp satırlara yazılacak modeller.
+SPLIT_IDS = {"railway"}
+
+
+# Önemli durumları boyamak için: önerme -> dolgu rengi.
+# Bir durumda birden fazla eşleşen önerme varsa listede önce gelen kazanır.
+RED = "#f8c9c4"     # tehlikeli / takılı kalan durumlar
+GREEN = "#cdebc6"   # ilerleme / hedef durumları
+BLUE = "#cfe0f5"    # hareket halindeki asansör
+HIGHLIGHT = [
+    ("deadlock", RED), ("unsafe_state", RED), ("stalled", RED),
+    ("packet_lost", RED), ("bit_error", RED),
+    ("P0_eating", GREEN), ("P1_eating", GREEN), ("P2_eating", GREEN),
+    ("P0_in_CS", GREEN), ("P1_in_CS", GREEN),
+    ("ack_received", GREEN), ("gate_is_down", GREEN), ("doors_open", GREEN),
+    ("moving", BLUE),
+]
+
+
+def fill_color(labels):
+    """Durumun etiketlerine göre dolgu rengini döndürür (yoksa None)."""
+    for prop, color in HIGHLIGHT:
+        if prop in labels:
+            return color
+    return None
 
 
 def esc(text):
@@ -35,16 +65,18 @@ def reachable(model):
     return seen
 
 
-def to_dot(model, title):
+def to_dot(model, title, split_ids=None):
+    if split_ids is None:
+        split_ids = title in SPLIT_IDS
     states = model["states"]
     initial = model["initial_states"]
     reach = reachable(model)
 
     lines = [
         "digraph G {",
-        "  rankdir=LR;",
+        "  rankdir=TB; nodesep=0.12; ranksep=0.25;",
         f'  label="{esc(title)}"; labelloc=t; fontsize=20; fontname="Helvetica";',
-        '  node [shape=box, style=rounded, fontname="Helvetica", fontsize=11];',
+        '  node [shape=box, style=rounded, fontname="Helvetica", fontsize=12];',
         '  edge [arrowsize=0.7];',
     ]
 
@@ -56,9 +88,13 @@ def to_dot(model, title):
     # Düğümler: üst satırda kimlik, alt satırda etiketler
     for sid, st in states.items():
         props = ", ".join(st["labels"]) if st["labels"] else "∅"
-        attrs = [f'label="{esc(sid)}\\n{{{esc(props)}}}"']
+        name = esc(sid).replace("__", "\\n") if split_ids else esc(sid)
+        attrs = [f'label="{name}\\n{{{esc(props)}}}"']
         if sid in initial:
             attrs.append("penwidth=2")
+        color = fill_color(st["labels"])
+        if color:
+            attrs.append(f'style="rounded,filled", fillcolor="{color}"')
         if sid not in reach:
             attrs.append('style="rounded,dashed", color=gray55, fontcolor=gray55')
         lines.append(f'  "{esc(sid)}" [{", ".join(attrs)}];')

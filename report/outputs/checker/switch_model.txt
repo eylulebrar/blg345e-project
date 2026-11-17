@@ -1,0 +1,7 @@
+$ ./my_checker --parse tests/switch_model.json
+[PARSER]: Loaded tests/switch_model.json successfully.
+[METRICS]: Total declared states: 2
+[METRICS]: Total transitions found: 4
+[REACHABILITY]: Reachable states from initial node(s): 2
+[DIAGNOSTICS]: Unreachable states detected: 0
+(exit code: 0)

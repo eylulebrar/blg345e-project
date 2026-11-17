@@ -1,0 +1,3 @@
+$ ./my_checker --parse tests/test3_no_transitions.json
+[SEMANTIC ERROR]: State 's_on' has no outgoing transitions (use a self-loop for deadlocks).
+(exit code: 1)
